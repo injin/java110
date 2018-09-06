@@ -6,7 +6,7 @@ import bitcamp.java110.cms.util.ArrayList;
 
 public class ManagerController {
     
-    private ArrayList managers = new ArrayList();
+    private ArrayList<Manager> managers = new ArrayList<>();
     public Scanner keyIn;
     
     public ManagerController(Scanner keyIn) {
