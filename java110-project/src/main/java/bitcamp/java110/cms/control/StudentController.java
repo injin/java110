@@ -121,15 +121,15 @@ public class StudentController {
         students.add(s);
         
         s = new Student();
-        s.setName("b");
+        s.setName("c");
         students.add(s);
         
         s = new Student();
-        s.setName("b");
+        s.setName("d");
         students.add(s);
         
         s = new Student();
-        s.setName("b");
+        s.setName("e");
         students.add(s);
     }
 }
