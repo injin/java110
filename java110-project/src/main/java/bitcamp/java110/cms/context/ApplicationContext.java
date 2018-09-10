@@ -24,10 +24,6 @@ public class ApplicationContext {
         //패키지 폴더에 들어 있는 파일 목록을 찾아 인스턴스를 생성하여 objPool에 보관한다.
         findClass(file, path);
         
-        // 1) 인스턴스 생성
-        // 해당 패키지에 있는 클래스를 찾아서 인스턴스를 생성한 후에
-        // objPool에 보관한다.
-        
     }
     
     //objPool에 보관된 객체를 이름으로 찾아 리턴한다.
@@ -66,7 +62,6 @@ public class ApplicationContext {
                     // => Component 애노테이션 value 값으로 인스턴스를 objPool에 저장한다.
                     objPool.put(anno.value(), instance);
                     
-                    System.out.println(instance.getClass());
                 } catch (Exception e) {
                     System.out.printf("%s 기본 생성자가 없습니다. \n", 
                             clazz.getName());
