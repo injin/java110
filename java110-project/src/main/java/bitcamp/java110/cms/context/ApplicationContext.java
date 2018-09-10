@@ -3,6 +3,7 @@ package bitcamp.java110.cms.context;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
@@ -32,6 +33,13 @@ public class ApplicationContext {
         return objPool.get(name);
     }
     
+    public String[] getBeanDefinitionNames() {
+        Set<String> keySet = objPool.keySet();
+        String[] names = new String[keySet.size()];
+        keySet.toArray(names);
+        return names;
+    }
+    
     private void findClass(File path, String packagePath) throws Exception {
         File[] files = path.listFiles();
         for (File file : files) {
@@ -58,6 +66,14 @@ public class ApplicationContext {
                     
                     // => 클래스에서 Component 애노테이션을 추출한다.
                     Component anno = clazz.getAnnotation(Component.class);
+                    
+                    // => Component 애노테이션이 value 값이 있으면 그 값으로 객체를 저장
+                    //    없으면, 클래스 이름으로 객체를 저장한다.
+                    if (anno.value().length() > 0) {
+                        objPool.put(anno.value(), instance);
+                    } else {
+                        objPool.put(clazz.getName(), instance);
+                    }
                     
                     // => Component 애노테이션 value 값으로 인스턴스를 objPool에 저장한다.
                     objPool.put(anno.value(), instance);
