@@ -22,29 +22,25 @@ public class StudentAddController {
         while (true) {
             Student m = new Student();
             
-            System.out.println("이름? ");
+            System.out.print("이름? ");
             m.setName(keyIn.nextLine());
             
-            System.out.println("이메일? ");
+            System.out.print("이메일? ");
             m.setEmail(keyIn.nextLine());
             
-            System.out.println("암호? ");
+            System.out.print("암호? ");
             m.setPassword(keyIn.nextLine());
             
-            System.out.println("최종학력? ");
+            System.out.print("최종학력? ");
             m.setSchool(keyIn.nextLine());
             
-            System.out.println("재직여부?(true/false) ");
+            System.out.print("재직여부?(true/false) ");
             m.setWorking(Boolean.parseBoolean(keyIn.nextLine()));
             
-            System.out.println("전화? ");
+            System.out.print("전화? ");
             m.setTel(keyIn.nextLine());
             
-            if (studentDao.insert(m) > 0) {
-                System.out.println("저장하였습니다.");
-            } else {
-                System.out.println("같은 이메일의 학생이 존재합니다.");
-            }
+            studentDao.insert(m);
             
             System.out.println("계속 하시겠습니까?(Y/n)");
             String answer = keyIn.nextLine();
