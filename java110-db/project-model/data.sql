@@ -19,3 +19,11 @@ insert into p1_memb(mno, name, email, pwd, cdt)
 values (9, 'user09', 'user09@test.com', password('1111'), now());
 insert into p1_memb(mno, name, email, pwd, cdt)
 values (10, 'user10', 'user10@test.com', password('1111'), now());
+
+
+-- 학생 회원
+insert into p1_stud(sno, schl, work) values(1, '비트대학교', 'N');
+insert into p1_stud(sno, schl, work) values(2, '비트대학교', 'Y');
+insert into p1_stud(sno, schl, work) values(3, '캠프대학교', 'Y');
+insert into p1_stud(sno, schl, work) values(4, '캠프대학교', 'N');
+insert into p1_stud(sno, schl, work) values(5, '오호라대학교', 'N');
