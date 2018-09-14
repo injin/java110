@@ -14,7 +14,7 @@ public class ClientApp {
         
         try(
             // 서버에 연결하기
-            Socket socket = new Socket("localhost", 8888);
+            Socket socket = new Socket("192.168.0.8", 8888);
             
             // 서버에 데이터를 보내고 읽을 도구를 준비하기
             PrintStream out = new PrintStream(
@@ -48,7 +48,7 @@ public class ClientApp {
     }
 
     private static String prompt() {
-        System.out.println("입력> ");
+        System.out.print("입력> ");
         return keyIn.nextLine();
     }
 }

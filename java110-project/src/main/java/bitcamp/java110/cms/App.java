@@ -58,7 +58,6 @@ public class App {
                 System.out.println("실행 오류!");
                 System.out.println(e.getCause());
             }
-            
         }
         
         keyIn.close();
