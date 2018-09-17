@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.control.manager;
 
-import java.util.Scanner;
+import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
+import bitcamp.java110.cms.server.Request;
+import bitcamp.java110.cms.server.Response;
 
 @Component
 public class ManagerDetailController {
@@ -20,21 +22,23 @@ public class ManagerDetailController {
     }
 
     @RequestMapping("manager/detail")
-    public void detail(Scanner keyIn) {
-        System.out.print("조회할 매니저의 번호? ");
-        int no = Integer.parseInt(keyIn.nextLine());
+    public void detail(Request request, Response response) {
+        
+        int no = Integer.parseInt(request.getParameger("no"));
         Manager manager = managerDao.findByNo(no);
         
+        PrintWriter out = response.getWriter();
+        
         if (manager == null) {
-            System.out.println("해당 번호의 매니저 정보가 없습니다!");
+            out.println("해당 번호의 매니저 정보가 없습니다!");
             return;
         }
         
-        System.out.printf("이름: %s\n", manager.getName());
-        System.out.printf("이메일: %s\n", manager.getEmail());
-        System.out.printf("암호: %s\n", manager.getPassword());
-        System.out.printf("전화번호: %s\n", manager.getTel());
-        System.out.printf("직위: %s\n", manager.getPosition());
+        out.printf("이름: %s\n", manager.getName());
+        out.printf("이메일: %s\n", manager.getEmail());
+        out.printf("암호: %s\n", manager.getPassword());
+        out.printf("전화번호: %s\n", manager.getTel());
+        out.printf("직위: %s\n", manager.getPosition());
     }
     
 }
