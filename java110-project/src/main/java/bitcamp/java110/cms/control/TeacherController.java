@@ -3,14 +3,15 @@ package bitcamp.java110.cms.control;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
-import bitcamp.java110.cms.server.Request;
-import bitcamp.java110.cms.server.Response;
 
 @Component
 public class TeacherController {
@@ -23,15 +24,16 @@ public class TeacherController {
     }
 
     @RequestMapping("teacher/add")
-    public void add(Request request, Response response) {
+    public void add(ServletRequest request, ServletResponse response) 
+            throws Exception {
         Teacher t = new Teacher();
         
-        t.setName(request.getParameger("name"));
-        t.setEmail(request.getParameger("email"));
-        t.setPassword(request.getParameger("password"));
-        t.setTel(request.getParameger("tel"));
-        t.setPay(Integer.parseInt(request.getParameger("pay")));
-        t.setSubjects(request.getParameger("subjects"));
+        t.setName(request.getParameter("name"));
+        t.setEmail(request.getParameter("email"));
+        t.setPassword(request.getParameter("password"));
+        t.setTel(request.getParameter("tel"));
+        t.setPay(Integer.parseInt(request.getParameter("pay")));
+        t.setSubjects(request.getParameter("subjects"));
         
         teacherDao.insert(t);
         
@@ -40,8 +42,9 @@ public class TeacherController {
     }
     
     @RequestMapping("teacher/delete")
-    public void delete(Request request, Response response) {
-        int no = Integer.parseInt(request.getParameger("no"));
+    public void delete(ServletRequest request, ServletResponse response)
+            throws Exception {
+        int no = Integer.parseInt(request.getParameter("no"));
         
         PrintWriter out = response.getWriter();
         
@@ -53,9 +56,10 @@ public class TeacherController {
     }
     
     @RequestMapping("teacher/detail")
-    public void detail(Request request, Response response) {
+    public void detail(ServletRequest request, ServletResponse response)
+        throws Exception {
         
-        int no = Integer.parseInt(request.getParameger("no"));
+        int no = Integer.parseInt(request.getParameter("no"));
         Teacher teacher = teacherDao.findByNo(no);
         
         PrintWriter out = response.getWriter();
@@ -74,7 +78,8 @@ public class TeacherController {
     }
     
     @RequestMapping("teacher/list")
-    public void list(Request request, Response response) {
+    public void list(ServletRequest request, ServletResponse response)
+            throws Exception {
         PrintWriter out = response.getWriter();
         List<Teacher> list = teacherDao.findAll();
         for (Teacher t : list) {
