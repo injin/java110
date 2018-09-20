@@ -60,7 +60,7 @@ public class Servlet01 implements Servlet {
         // 이 메서드를 호출하여 ServletConfig 객체를 리턴 받아 사용한다.
         // 그래서 이 메서드는 init()에서 파라미터로 받은 ServletConfig 객체를
         // 잘 보관해 두었다가 호출될 떄 리턴해야 한다.
-        return null;
+        return config;
     }
 
     @Override
@@ -69,9 +69,6 @@ public class Servlet01 implements Servlet {
         // 그래서 클라이언트가 요청한 일을 수행한다.
         // 예를 들면, 게시물 목록을 출력하거나 로그인을 처리하거나 회원 가입을 처리하는 등의 일을 한다.
         System.out.println("service() 호출됨");
-        for (int i = 0; i < 5; i++) {
-            System.out.println("");
-        }
     }
 
     @Override
@@ -112,14 +109,5 @@ public class Servlet01 implements Servlet {
 // - 클라이언트 마다 구분해서 값을 저장해야 한다면,
 //   서블릿의 인스턴스 변수를 사용해서는 안된다.
 //   왜? 서블릿 객체는 한 개만 생성되고 모든 클라이언트가 공유한다.
-
-
-
-
-
-
-
-
-
 
 
