@@ -27,20 +27,53 @@ public class ManagerDetailServlet extends HttpServlet {
         
         ManagerDao managerDao = (ManagerDao)this.getServletContext()
                 .getAttribute("managerDao");
-        Manager manager = managerDao.findByNo(no);
+        Manager m = managerDao.findByNo(no);
         
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        if (manager == null) {
-            out.println("해당 번호의 매니저 정보가 없습니다!");
-            return;
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>매니저 관리</title>");
+        
+        out.println("<style>");
+        out.println("table, th, td {");
+        out.println("    border: 1px solid gray;");
+        out.println("}");
+        out.println("</style>");
+        
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>매니저 상세정보</h1>");
+        
+        if (m == null) {
+            out.println("<p>해당 번호의 매니저 정보가 없습니다!</p>");
+        } else {
+            out.println("<table>");
+            out.println("<tbody>");
+            out.printf("<tr><th>번호</th><td>%d</td></tr>\n", m.getNo());
+            out.printf("<tr><th>이름</th><td>%s</td></tr>\n", m.getName());
+            out.printf("<tr><th>이메일</th><td>%s</td></tr>\n", m.getEmail());
+            out.printf("<tr><th>암호</th><td>%s</td></tr>\n", m.getPassword());
+            out.printf("<tr><th>전화</th><td>%s</td></tr>\n", m.getTel());
+            out.printf("<tr><th>직위</th><td>%s</td></tr>\n", m.getPosition());
+            out.println("</tbody>");
+            out.println("</table>");
+            
+            out.printf("<button type='button' onclick='remove(%d)'>삭제</button>\n",
+                    m.getNo());
         }
         
-        out.printf("이름: %s\n", manager.getName());
-        out.printf("이메일: %s\n", manager.getEmail());
-        out.printf("암호: %s\n", manager.getPassword());
-        out.printf("전화번호: %s\n", manager.getTel());
-        out.printf("직위: %s\n", manager.getPosition());
+        out.println("<script>");
+        out.println("function remove(no) {");
+        out.println("    location.href = 'delete?no=' + no");
+        out.println("}");
+        out.println("</script>");
+        
+        out.println("</body>");
+        out.println("</html>");
+        
     }
 }

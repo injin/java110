@@ -18,14 +18,13 @@ public class TeacherAddServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
     
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/plain;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         
         Teacher t = new Teacher();
-        
         t.setName(request.getParameter("name"));
         t.setEmail(request.getParameter("email"));
         t.setPassword(request.getParameter("password"));
@@ -35,9 +34,34 @@ private static final long serialVersionUID = 1L;
         
         TeacherDao teacherDao = (TeacherDao)this.getServletContext()
                 .getAttribute("teacherDao");
-        teacherDao.insert(t);
         
-        PrintWriter out = response.getWriter();
-        out.println("등록하였습니다.");
+        try {
+            teacherDao.insert(t);
+            response.sendRedirect("list");
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            // 등록 오류 내용을 출력하고 3초가 경과한 후에 목록 페이지를 요청하도록
+            // "리프래시" 명령을 설정한다.
+            // => 응답할 때 응답 헤더로 리프래시에 대한 명령을 웹브라우저에게 전달한다.
+            response.setHeader("Refresh", "3;url=list");
+            
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<meta charset='UTF-8'>");
+            out.println("<title>강사 관리</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>강사 등록 오류</h1>");
+            out.printf("<p>%s</p>\n", e.getMessage());
+            out.println("<p>잠시 기다리면 목록 페이지로 자동으로 이동합니다.</p>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+        
     }
 }
