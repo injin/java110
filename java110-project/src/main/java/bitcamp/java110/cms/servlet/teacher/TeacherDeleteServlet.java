@@ -27,6 +27,7 @@ private static final long serialVersionUID = 1L;
         
         try {
             teacherDao.delete(no);
+            response.sendRedirect("list");
         } catch (Exception e) {
             request.setAttribute("error", e);
             request.setAttribute("message", "강사 삭제 오류!");

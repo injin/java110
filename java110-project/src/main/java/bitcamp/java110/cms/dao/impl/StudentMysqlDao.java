@@ -211,4 +211,48 @@ public class StudentMysqlDao implements StudentDao {
             try { stmt.close(); } catch (Exception e) {}
         }
     }
+    
+    @Override
+    public Student findByEmailPassword(String email, String password) throws DaoException {
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = dataSource.getConnection();
+            
+            stmt = con.createStatement();
+            
+            rs = stmt.executeQuery(
+                    "select" +
+                    " m.mno," + 
+                    " m.name," + 
+                    " m.email," + 
+                    " m.tel," + 
+                    " st.schl," + 
+                    " st.work" +
+                    " from p1_stud st" + 
+                    " inner join p1_memb m on st.sno = m.mno" +
+                    " where m.email='" + email + 
+                    "' and m.pwd = password('" + password +
+                    "')");
+            
+            if (rs.next()) {
+                Student stud = new Student();
+                stud.setNo(rs.getInt("mno"));
+                stud.setEmail(rs.getString("email"));
+                stud.setName(rs.getString("name"));
+                stud.setTel(rs.getString("tel"));
+                stud.setSchool(rs.getString("schl"));
+                stud.setWorking(("Y".equals(rs.getString("work")) ? true : false));
+                return stud;
+            }
+            return null;
+        } catch (Exception e) {
+            throw new DaoException(e);
+        } finally {
+            try { rs.close(); } catch (Exception e) {}
+            try { stmt.close(); } catch (Exception e) {}
+        }
+    }
 }
