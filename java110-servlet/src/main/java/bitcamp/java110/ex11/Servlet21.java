@@ -45,10 +45,10 @@ public class Servlet21 extends HttpServlet {
         // => WAS 마다 세션ID의 쿠키이름이 다를 수 있다.
         /*
          * HTTP/1.1 200
-Set-Cookie: JSESSIONID=6791E1B77DD59E3639F0CF5958296634; Path=/; HttpOnly
-Content-Type: text/html;charset=UTF-8
-Content-Length: 143
-Date: Tue, 02 Oct 2018 00:37:45 GMT
+            Set-Cookie: JSESSIONID=6791E1B77DD59E3639F0CF5958296634; Path=/; HttpOnly
+            Content-Type: text/html;charset=UTF-8
+            Content-Length: 143
+            Date: Tue, 02 Oct 2018 00:37:45 GMT
          */
         HttpSession session = request.getSession();
         
