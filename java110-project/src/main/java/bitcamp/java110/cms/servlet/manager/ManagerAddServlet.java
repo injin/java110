@@ -18,6 +18,19 @@ public class ManagerAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
+    protected void doGet(
+            HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // form.jsp 인클루드
+        RequestDispatcher rd = request.getRequestDispatcher(
+                "/manager/form.jsp");
+        rd.include(request, response);
+    }
+    
+    @Override
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
@@ -33,8 +46,6 @@ public class ManagerAddServlet extends HttpServlet {
         m.setPassword(request.getParameter("password"));
         m.setTel(request.getParameter("tel"));
         m.setPosition(request.getParameter("position"));
-        
-        
         
         ManagerDao managerDao = (ManagerDao)this.getServletContext()
                 .getAttribute("managerDao");
