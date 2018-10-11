@@ -39,6 +39,7 @@ public class StudentMysqlDao implements StudentDao {
             throw new DaoException(e);
         } finally {
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -79,6 +80,7 @@ public class StudentMysqlDao implements StudentDao {
             throw new DaoException(e);
         } finally {
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
         return list;
     }
@@ -124,6 +126,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try { rs.close(); } catch (Exception e) {}
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -168,6 +171,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try { rs.close(); } catch (Exception e) {}
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -185,6 +189,7 @@ public class StudentMysqlDao implements StudentDao {
             throw new DaoException(e);
         } finally {
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -229,6 +234,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try { rs.close(); } catch (Exception e) {}
             try { stmt.close(); } catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
 }
