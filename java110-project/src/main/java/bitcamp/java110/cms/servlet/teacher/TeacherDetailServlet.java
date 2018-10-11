@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.service.TeacherService;
 
 @WebServlet("/teacher/detail")
 public class TeacherDetailServlet extends HttpServlet {
@@ -25,9 +25,9 @@ private static final long serialVersionUID = 1L;
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        TeacherDao teacherDao = (TeacherDao)this.getServletContext()
-                .getAttribute("teacherDao");
-        Teacher t = teacherDao.findByNo(no);
+        TeacherService teacherService = (TeacherService)this.getServletContext()
+                .getAttribute("teacherService");
+        Teacher t = teacherService.get(no);
         
         request.setAttribute("teacher", t);
         

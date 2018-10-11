@@ -1,16 +1,20 @@
 package bitcamp.java110.cms.servlet.student;
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.service.StudentService;
 
+@MultipartConfig(maxFileSize=2_000_000)
 @WebServlet("/student/add")
 public class StudentAddServlet extends HttpServlet {
     
@@ -45,11 +49,20 @@ public class StudentAddServlet extends HttpServlet {
         s.setSchool(request.getParameter("school"));
         s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
         
-        StudentDao studentDao = (StudentDao)this.getServletContext()
-                .getAttribute("studentDao");
+        StudentService studentService = (StudentService)this.getServletContext()
+                .getAttribute("studentService");
         
         try {
-            studentDao.insert(s);
+            // 사진 데이터 처리
+            Part part = request.getPart("file1");
+            if (part.getSize() > 0) {
+                String filename = UUID.randomUUID().toString();
+                part.write(this.getServletContext()
+                        .getRealPath("/upload/" + filename));
+                s.setPhoto(filename);
+            }
+            
+            studentService.add(s);;
             response.sendRedirect("list");
         } catch (Exception e) {
             request.setAttribute("error", e);
