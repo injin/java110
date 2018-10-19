@@ -1,12 +1,7 @@
 //factory method 및 builder 디자인 패턴 적용
 package ex02;
 
-import java.io.InputStream;
 import java.util.List;
-
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Test01 {
     

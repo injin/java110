@@ -50,39 +50,46 @@
     ex05/Test02_p1.java, ex05/Test02_p2.java<br>
 - <b>equals()와 hashCode()</b><br>
     ex05/Test02_p3.java, ex05/Test02_p4.java<br>
-- <b>[xml]setter 호출(Set 프로퍼티)</b><br>
+- <b>[xml 설정] setter 호출(Set 프로퍼티)</b><br>
     ex05/Car.java, ex05/Tire.java, ex05/Test03.java, ex05/app-context-3.xml<br>
-- <b>[xml]setter 호출(Map 프로퍼티)</b><br>
+- <b>[xml 설정] setter 호출(Map 프로퍼티)</b><br>
     ex05/Car.java, ex05/Test05.java, ex05/app-context-5.xml<br>
-- <b>[xml]setter 호출(p 네임스페이스)</b><br>
+- <b>[xml 설정] setter 호출(p 네임스페이스)</b><br>
     ex05/Car.java, ex05/Engine.java, ex05/Test06.java, ex05/app-context-6.xml<br>
-- <b>[xml]setter 호출 : 의존 객체 주입 순서</b><br>
+- <b>[xml 설정] setter 호출 : 의존 객체 주입 순서</b><br>
     ex05/Car.java, ex05/Engine.java, ex05/Test07.java, ex05/app-context-7.xml<br>
 
 
 <h3>ex06</h3>
-- <b>[xml]Factory 패턴(static)</b><br>
+- <b>[xml 설정] Factory 패턴(static)</b><br>
     ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory1.java<br>
-- <b>[xml]Factory 패턴(new)</b><br>
+- <b>[xml 설정] Factory 패턴(new)</b><br>
     ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory2.java<br>
-- <b>[xml]Factory 패턴(FactoryBean 인터페이스 구현)</b><br>
+- <b>[xml 설정] Factory 패턴(FactoryBean 인터페이스 구현)</b><br>
     ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactory3.java<br>
-- <b>[xml]Factory 패턴(FactoryBean 인터페이스 구현)</b><br>
+- <b>[xml 설정] Factory 패턴(FactoryBean 인터페이스 구현)</b><br>
     ex06/Engine.java, ex06/Test01.java, ex06/app-context-1.xml, ex06/EngineFactoryBean.java<br>
 
 <h3>ex07</h3>
-- <b>[xml]커스텀 프로퍼티 에디터(PropertyEditorSupport)</b><br>
+- <b>[xml 설정] 커스텀 프로퍼티 에디터(PropertyEditorSupport)</b><br>
     ex07/Car.java, ex07/Engine.java, ex07/DatePropertyEditor.java,<br>
     ex07app-context-1.xml/, ex07/Test01.java
 
 
 <h3>ex08</h3>
-- <b>@Autowired 애노테이션과 BeanPostProcessor</b><br>
+- <b>[xml+java설정] @Autowired 애노테이션과 BeanPostProcessor</b><br>
     ex08/Car.java, ex08/Engine.java, ex08/MyBeanPostProcessor.java<br>
     ex08/app-context-1.xml, ex08/Test01.java<br>
-- <b>의존 객체 자동 주입 : <context:annotation-config/></b><br>
+- <b>[xml+java설정] 의존 객체 자동 주입 : <context:annotation-config/></b><br>
     ex08/Car.java, ex08/Engine.java, ex08/app-context-2.xml, ex08/Test02.java<br>
-
+- <b>[xml+java설정] @Autowired field에 붙이기</b><br>
+    ex08/Car2.java, ex08/Engine.java, ex08/app-context-3.xml, ex08/Test03.java<br>
+- <b>[xml+java설정] @Autowired에서 같은 타입의 객체가 여러 개일 때(에러)</b><br>
+    ex08/Car2.java, ex08/Engine.java, ex08/app-context-4.xml, ex08/Test04.java<br>
+- <b>[xml+java설정] 해결책 @Qualifier</b><br>
+    ex08/Car3.java, ex08/Engine.java, ex08/app-context-5.xml, ex08/Test05.java<br>
+- <b>[xml+java설정] @Resource, JSR, JCP</b><br>
+    ex08/Car4.java, ex08/Engine.java, ex08/app-context-6.xml, ex08/Test06.java<br>
 
 
 
