@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java110.cms.domain.Teacher;
 import bitcamp.java110.cms.service.TeacherService;
 
@@ -25,8 +27,12 @@ private static final long serialVersionUID = 1L;
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        TeacherService teacherService = (TeacherService)this.getServletContext()
-                .getAttribute("teacherService");
+        ApplicationContext iocContainer =
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        TeacherService teacherService = 
+                iocContainer.getBean(TeacherService.class);
+        
         Teacher t = teacherService.get(no);
         
         request.setAttribute("teacher", t);
