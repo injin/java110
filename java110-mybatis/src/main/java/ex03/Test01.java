@@ -1,4 +1,4 @@
-//Mybatis 적용 - 입력 테스트
+//Mybatis 적용 - 조회 테스트
 package ex03;
 
 import java.io.InputStream;

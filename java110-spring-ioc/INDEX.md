@@ -91,8 +91,15 @@
 - <b>[xml+java설정] @Resource, JSR, JCP</b><br>
     ex08/Car4.java, ex08/Engine.java, ex08/app-context-6.xml, ex08/Test06.java<br>
 
+<h3>ex09</h3>
+- <b>[xml+java설정] @Component, @Controller, @Service, @Respository, @RestController</b><br>
+    ex09/Car.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java<br>
+- <b>[xml+java설정] @Component에서 id 생략</b><br>
+    ex09/Car2.java, ex09/Engine.java, ex09/app-context-1.xml, ex09/Test01.java<br>
 
-
+<h3>ex10</h3>
+- <b>[java설정] AppConfig.java, @Bean</b><br>
+    ex10/Car.java, ex10/Engine.java, ex10/AppConfig.java, ex10/Test01.java<br>
 
 
 

@@ -42,6 +42,5 @@ public class Test02_1 {
                     m.getNo() ,m.getName() ,m.getEmail() ,m.getTel());
         }
         
-        
     }
 }
