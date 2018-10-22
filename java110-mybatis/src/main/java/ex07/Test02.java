@@ -19,7 +19,7 @@ public class Test02 {
         BoardDao boardDao = new BoardDao();
         boardDao.setSqlSessionFactory(sqlSessionFactory);
         
-        Board board = boardDao.findByNo(2);
+        Board board = boardDao.findByNo(9);
         System.out.printf("번호:%d\n", board.getNo());
         System.out.printf("제목:%s\n", board.getTitle());
         System.out.printf("내용:%s\n", board.getContent());

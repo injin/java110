@@ -7,8 +7,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import ex07.MemberDao;
-
 public class Test02 {
     
     public static void main(String[] args) throws Exception {
@@ -20,9 +18,6 @@ public class Test02 {
         
         BoardDao boardDao = new BoardDao();
         boardDao.setSqlSessionFactory(sqlSessionFactory);
-        
-        MemberDao memberDao = new MemberDao();
-        memberDao.setSqlSessionFactory(sqlSessionFactory);
         
         Board board = boardDao.findByNo(1);
         System.out.printf("번호:%d\n", board.getNo());
