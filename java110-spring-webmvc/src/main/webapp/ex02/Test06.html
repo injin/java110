@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Test06 페이지 컨트롤러 테스트하기</h1>
+
+<button id="btn1">요청 : Accept: "text/plain"</button><br>
+<button id="btn2">요청 : Accept: "text/html, text/plain"</button><br>
+<button id="btn3">요청 : Accept: "text/html"</button><br>
+<button id="btn4">요청</button><br>
+<button id="btn5">요청 : bitcamp/aaa, bitcamp/bbb</button><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$("#btn1").click((e) => {
+    $.ajax("http://localhost:8888/app/ex02/test06", {
+        method: 'GET',
+        headers: {
+            accept: 'text/plain'
+        },
+        success : (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn2").click((e) => {
+    $.ajax("http://localhost:8888/app/ex02/test06", {
+        method: 'get',
+        headers: {
+            accept: 'text/html, text/plain' // html찾아보고 없으면 plain찾아라
+        },
+        success : (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn3").click((e) => {
+    $.ajax("http://localhost:8888/app/ex02/test06", {
+        method: 'get',
+        headers: {
+            accept: 'text/html' // 서버야 나 html줘
+        },
+        success : (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn4").click((e) => {
+    jQuery.ajax("http://localhost:8888/app/ex02/test06", {
+        method: 'get',
+        success : (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+$("#btn5").click((e) => {
+    $.ajax("http://localhost:8888/app/ex02/test06", {
+        method: 'get',
+        headers: {
+            accept: 'bitcamp/aaa, bitcamp/bbb' // 존재하지 않으므로 와일드 카드(*/*)로 넘어감
+        },
+        success : (result) => {
+            alert(result);
+        },
+        error: (xhr, status, msg) => {
+            console.log(status);
+            console.log(msg);
+        }
+    });
+});
+
+// 1) 함수는 객체다!!
+/* function plus(a,b) {
+    return a+b;
+}
+plus.v1 = "홍길동";
+plus.prt = function() {
+    console.log("v1?" + this.v1);
+}
+plus.prt();
+------------------------------------------------
+*/
+
+
+// 2) 생성자 함수
+/* function Member() {
+    console.log("member()..");
+    this.name = "홍길동";
+    this.print = function() {
+        console.log(this.name);
+    }
+}
+var o = new Member();
+o.print();
+------------------------------------------------
+*/
+
+// 3) 단축 표기법
+/* var obj = {
+    name : "홍길동",
+    print: function() {
+        alert(this.name);
+    }
+}
+var obj = {
+    name : "홍길동",
+    print() {
+        alert(this.name);
+    }
+}
+obj.print();
+------------------------------------------------
+*/
+
+// 4) aurguments 객체
+/* function plus(a,b) {
+    var sum=0;
+    for (var i in arguments) {
+        sum += arguments[i];
+    }
+    return sum;
+}
+console.log(plus(10, 20, 30, 40));
+------------------------------------------------
+ */
+ 
+ 
+// 5) JS에서 $는 함수다
+/* function jQuery() {
+    ...
+}
+
+var $ = jQuery;
+------------------------------------------------
+*/
+
+/*
+// 6) arrow function
+var xBtn1 = jQuery("#btn1");
+xBtn1.click((e) => { //arrow function (e와 this는 window객체 소속)
+                     // this 안쓰면 arrow function 써도 됨
+    
+}); */
+</script>
+</body>
+</html>
