@@ -2,11 +2,47 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.6)
+
+- 기존 라이브러리를 Spring WebMVC로 교체하기
+
+## java110-project (tag: v6.5)
+
+- 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+- 클라이언트가 보낸 값의 한글 처리하기
+
+## java110-project (tag: v6.4)
+
+- 요청 처리 메서드의 파라미터 값 처리를 자동화하기
+
+## java110-project (tag: v6.3)
+
+- CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
+
+## java110-project (tag: v6.2)
+
+- PageController 인터페이스 대신 애노테이션을 사용하여 호출 규칙을 정의
+
+## java110-project (tag: v6.1)
+
+- Page Controller를 POJO로 전환
+
+## 미포함
+
+- Front Controller 도입
+
+## java110-project (tag: v6.0)
+
+- Mybatis와 Spring IoC 컨테이너 연동
+
+## java110-project (tag: v5.9)
+
+- Spring IoC 컨테이너 적용
+
 ## java110-project (tag: v5.8)
 
 - Mybatis에서 자동으로 생성해주는 Mapper(DAO) 객체 사용하기
 - Mybatis에서 트랜잭션 다루기
-
 
 ## java110-project (tag: v5.7)
 
