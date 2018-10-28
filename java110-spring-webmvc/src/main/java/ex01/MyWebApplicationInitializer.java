@@ -36,7 +36,7 @@ public class MyWebApplicationInitializer
         //       지정된 WebApplicationInitializer.class 의 구현체 목록이다.
         //    => 즉 WebApplicationInitializer를 구현한 클래스를 모두 찾아
         //       그 클래스 정보를 목록에 담아 준다.
-        //    => 그러면 SpringServletContainerInitializer의 onStart()에서는
+        //    => 그러면 SpringServletContainerInitializer의 onStartup()에서는
         //       목록에 등록된 클래스의 객체를 한 개씩 만들고,
         //       그 객체에 대해 onStarup()을 호출한다.
         //    => 즉 지금 여기에서 만드는 MyWebApplicationInitializer
