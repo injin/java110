@@ -101,6 +101,52 @@
 - <b>[java설정] AppConfig.java, @Bean</b><br>
     ex10/Car.java, ex10/Engine.java, ex10/AppConfig.java, ex10/Test01.java<br>
 
+<h3>ex11/step1</h3>
+- <b>매서드 호출 앞/뒤에 코드 붙이기</b><br>
+    <b>직접 코드 삽입 가능한 경우</b><br>
+        AppConfig.java, Dao1.java,Dao2.java, Dao3.java, Service.java<br>
+        Test01.java<br>
+    <b>직접 코드 삽입 불가능한 경우</b><br>
+        AppConfig.java, Dao1.java,Dao2.java, Dao3.java, Service.java<br>
+        Test02.java<br>
+
+<h3>ex11/step2</h3>
+- <b>Proxy 패턴</b><br>
+        AppConfig.java, Dao1.java, Dao2.java, Dao3.java, Service.java<br>
+        ServiceImpl.java, ServiceProxy.java, Test01.java, Test02.java<br>
+
+<h3>ex11/step3</h3>
+- <b>Proxy 자동생성</b><br>
+        AppConfig.java, Dao1.java, Dao2.java, Dao3.java, Service.java, ServiceImpl.java<br>
+        <b>Service 프록시 자동생성</b><br>
+            MethodFilter.java, Test01.java<br>
+        <b>Map 프록시 자동생성</b><br>
+            Test02.java<br>
+
+<h3>ex11/step4</h3>
+        Dao1.java, Dao2.java, Dao3.java, MyAdvice.java, Service.java, ServiceImpl.java<br>
+- <b>AOP</b><br>
+        Test01.java, app-context-1.xml<br>
+        Test02.java, app-context-2.xml<br>
+        Test03.java, app-context-3.xml<br>
+
+<h3>ex11/step5</h3>
+- <b>&lt;aop:after-returning/>,&lt;aop:after-throwing/></b><br>
+        Dao1.java, Dao2.java, Dao3.java, MyAdvice.java, Service.java, ServiceImpl.java<br>
+        Test01.java, app-context-1.xml<br>
 
 
+<h3>ex11/step6</h3>
+- <b>리턴 값, 예외 정보 받기(returning, throwing)</b><br>
+        Dao1.java, Dao2.java, Dao3.java, MyAdvice.java, Service.java, ServiceImpl.java<br>
+        Test01.java, app-context-1.xml<br>
 
+<h3>ex11/step7</h3>
+- <b>AOP 자바설정 (&lt;aop:aspectj-autoproxy/>, @Aspect, @Before, @AfterReturning, @AfterThrowing)</b><br>
+        Dao1.java, Dao2.java, Dao3.java, MyAdvice.java, Service.java, ServiceImpl.java<br>
+        Test01.java, app-context-1.xml<br>
+    
+<h3>ex11/step8</h3>
+- <b>AOP 자바설정 (@EnableAspectJAutoProxy)</b><br>
+        Dao1.java, Dao2.java, Dao3.java, MyAdvice.java, Service.java, ServiceImpl.java<br>
+        Test01.java, app-context-1.xml<br>

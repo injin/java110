@@ -1,4 +1,4 @@
-<%@ page language="java"
+<%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
@@ -20,32 +20,32 @@ th {
 
 <h1>매니저 등록(MVC)</h1>
 
-<form action="add" method="post" enctype="multipart/form-data">
+<form action='add' method='post' enctype="multipart/form-data">
 <table>
 <tbody>
 <tr>
     <th>이름</th>
-    <td><input type="text" name="name"></td>
+    <td><input type='text' name='name'></td>
 </tr>
 <tr>
     <th>이메일</th>
-    <td><input type="email" name="email"></td>
+    <td><input type='email' name='email'></td>
 </tr>
 <tr>
     <th>암호</th>
-    <td><input type="password" name="password"></td>
+    <td><input type='password' name='password'></td>
 </tr>
 <tr>
     <th>전화</th>
-    <td><input type="tel" name="tel"></td>
+    <td><input type="tel" name='tel'></td>
 </tr>
 <tr>
     <th>직위</th>
-    <td><input type="text" name="position"></td>
+    <td><input type='text' name='position'></td>
 </tr>
 <tr>
     <th>사진</th>
-    <td><input type="file" name="file1"></td>
+    <td><input type='file' name='file1'></td>
 </tr>
 <tr>
     <th></th>
@@ -59,3 +59,15 @@ th {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+    

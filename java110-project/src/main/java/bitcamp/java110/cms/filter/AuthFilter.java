@@ -7,14 +7,13 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bitcamp.java110.cms.domain.Member;
 
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 public class AuthFilter implements Filter {
 
     @Override
@@ -28,16 +27,17 @@ public class AuthFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         
         
-        String servletPath = httpRequest.getServletPath();
+        //String servletPath = httpRequest.getServletPath(); // => /app
+        String pathInfo = httpRequest.getPathInfo(); // => /manager/add
         
-        if (servletPath.endsWith("add") ||
-            servletPath.endsWith("delete")) {
+        if (pathInfo.endsWith("add") ||
+                pathInfo.endsWith("delete")) {
             
             // 로그인 여부 검사
             HttpSession session = httpRequest.getSession();
             Member loginUser = (Member)session.getAttribute("loginUser");
             if (loginUser == null) {
-                httpResponse.sendRedirect("/auth/login");
+                httpResponse.sendRedirect("/auth/form");
                 return;
             }
         }
