@@ -15,9 +15,13 @@
 - 조건문을 만든다.
 </pre>
 
-<c:set var="name" value="홍길동" />
+<%-- <c:set var="name" value="홍길동" />
 <c:set var="age" value="16" />
-<c:set var="gender" value="woman" />
+<c:set var="gender" value="woman" /> --%>
+
+${param.name}<br>
+${param.age}<br>
+${param.gender}
 
 <c:if test="${not empty name}">
     <p>${name}님 환영합니다!
