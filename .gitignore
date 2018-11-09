@@ -5,3 +5,4 @@ build/
 .classpath
 .project
 **/sec.properties
+**/api.properties

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>동기 요청의 문제점/<h1>
+<button type="button" id="btn1">동기 요청하기</button><br>
+<button type="button" id="btn2">테스트 버튼</button>
+<button type="button" id="btn3">비동기 요청하기</button><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+// 동기방식
+$('#btn1').click(() => {
+    // 자바스크립트가 값을 리턴할 때까지 페이지 전체가 block이 돼버림
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'test23.jsp', false);
+    xhr.send();
+    console.log(xhr.responseText);
+});
+
+// 비동기방식
+$('#btn3').click(() => {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.open('GET', 'test23.jsp', true);
+    xhr.send();
+});
+
+
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
     <h1>비트캠프</h1>
     <ul>
 <%
-Member loginUser = (Member)session.getAttribute("loginUser");
+  Member loginUser = (Member)session.getAttribute("loginUser");
 if (loginUser == null) {
 %>
     <li><a href='/app/auth/form'>로그인</a></li>

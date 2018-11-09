@@ -1,6 +1,7 @@
 package bitcamp.java110.cms.web;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -78,5 +79,38 @@ public class AuthController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:form";
+    }
+    
+    @RequestMapping("/fblogin")
+    public String fblogin(
+            String accessToken,
+            String type,
+            HttpSession session) {
+      
+      try {
+        Member loginUser = authService.getFacebookMember(accessToken, type);
+        
+        session.setAttribute("loginUser", loginUser);
+        String redirectUrl = null;
+        
+        switch (type) {
+        case "student":
+            redirectUrl = "../student/list";
+            break;
+        case "teacher":
+            redirectUrl = "../teacher/list";
+            break;
+        case "manager":
+            redirectUrl = "../manager/list";
+            break;
+        }
+        
+        return "redirect:" + redirectUrl;
+      } catch (Exception e) {
+        e.printStackTrace();
+        session.invalidate();
+        return "redirect:form";
+      }
+      
     }
 }
